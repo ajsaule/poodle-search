@@ -9,9 +9,6 @@ $footer-color: lightgrey;
 }
 .wrapper {
     display: flex;
-    // position: absolute;
-    // top: 12%;
-    // left: 0; 
     width: 100%;
     flex-direction: column;
     text-align: center;
@@ -58,17 +55,26 @@ $footer-color: lightgrey;
 }
 
 .search-container {
+    position: relative;
     width: 100%;
     height: 100px;
+    
+    /* maybe think about adding proper SVG icon*/
     
     .search-bar {
         display: block;
         margin: 0 auto;
-        width: 500px;
+        padding-left: 3.2em;
+        width: 450px;
         height: 44px;
+        font-size: 16px;
         border-radius: 27px;
         border: 1px solid #dfe1e5;
         outline: none;
+        background-image: url(https://www.clipartmax.com/png/full/32-322083_magnifying-glass-clipart-transparent-background-magnifying-glass-icon.png);
+        background-repeat: no-repeat;
+        background-position: 1.05em;
+        background-size: 1em;
 
         &:hover, &:focus {
             box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
@@ -122,30 +128,38 @@ $footer-color: lightgrey;
 
 
 /* Breakpoint vars */
-$mobile-small: 245px;
-$laptop-medium: 980px;
+$tablet: 555px; 
+$mobile: 400px;
+$mobile-small: 380px;
 
 /* Breakpoints */
-@media (max-width: $laptop-medium) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        // align-items: center;
-        // justify-content: center;
-        width: 100%;
-        background-color: red
+@media (max-width: $tablet) {
+    .search-container .search-bar {
+        width: 80%;
     }
-    .hero-container {
-        flex: 1 1 20em;
-    }
-    .search-container {
-        flex: 1 1 20em;
+}
+
+@media (max-width: $mobile) {
+    .nav-bar {
+        width: 400px;
     }
 }
 
 @media (max-width: $mobile-small) {
-    .wrapper {
-        background-color: blue;
+    .nav-bar {
+        display: none;
+    }
+    
+    .lucky-buttons {
+        width: 390px;
+    } 
+
+    .wrapper .search-container .search-bar {
+        width: 285px;
+        margin-left: 2em;
+    }
+
+    .poodle-hero-img {
+        margin-left: 3em;
     }
 }

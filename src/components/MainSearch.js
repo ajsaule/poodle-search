@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './MainSearch.scss';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
 
 export default class MainSearch extends Component {
 
-
+    
     
     render() {
+        const searchIcon = <FontAwesomeIcon icon={faSquare} />
 
         return (
             <div>
