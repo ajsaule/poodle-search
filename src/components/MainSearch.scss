@@ -59,9 +59,12 @@ $footer-color: lightgrey;
     width: 100%;
     height: 100px;
     
-    /* maybe think about adding proper SVG icon*/
-    
-    .search-bar {
+    .search-icon {
+        
+    }
+
+    .search-bar-wrapper {
+        position: relative;
         display: block;
         margin: 0 auto;
         padding: 0 1.8em 0 3.2em;
@@ -80,10 +83,39 @@ $footer-color: lightgrey;
             box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
         }
     }
+
+    .search-bar-dropdown {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        padding: 0 1.8em 0 3.2em;
+        width: 450px;
+        height: 100px;
+        font-size: 16px;
+        border-radius: 27px;
+        border: 1px solid #dfe1e5;
+        outline: none;
+        background-image: url(https://www.clipartmax.com/png/full/32-322083_magnifying-glass-clipart-transparent-background-magnifying-glass-icon.png);
+        background-repeat: no-repeat;
+        background-position: 1.05em;
+        background-size: 1em;
+        box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    }
+
+    .search-bar {
+        display: block;
+        margin: 0.6em auto;
+        width: 450px;
+        height: 1.5em;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
 }
 
 .lucky-buttons { 
     margin-top: 1.6em;
+    z-index: -1;
 
     input[type="button"] {
         margin: 0 0.5em;
