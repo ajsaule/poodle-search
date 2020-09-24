@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './MainSearch.scss';
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
 
 export default class MainSearch extends Component {
 
-    
+    handleChange = (e) => {
+
+    }
     
     render() {
-        const searchIcon = <FontAwesomeIcon icon={faSquare} />
+        const { mainSearchDropdown } = this.state;
 
         return (
             <div>
@@ -29,7 +29,7 @@ export default class MainSearch extends Component {
                         <img className="poodle-hero-img" src="https://fontmeme.com/permalink/200922/16bf0f375ad5e81bd6128af3a69a0b59.png" />
                     </div>
                     <div className="search-container">
-                        <input type="text" className="search-bar" />
+                        <input onChange={this.handleChange} type="text" className="search-bar" />
                         <div className="lucky-buttons">
                             {/* these will need to be sumbit for the API  */}
                             <input type="button" value="Poodle Search"/>
