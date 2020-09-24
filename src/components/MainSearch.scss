@@ -45,12 +45,12 @@ $footer-color: lightgrey;
 
 .hero-container {
     width: 100%;
-    height: 20em;
+    height: 15em;
 }
 .poodle-hero-img {
     display: block;
     margin: 0 auto;
-    padding-top: 13em;
+    padding-top: 8em;
     height: 5em;
 }
 
@@ -149,17 +149,17 @@ $mobile-small: 380px;
     .nav-bar {
         display: none;
     }
-    
-    .lucky-buttons {
-        width: 390px;
-    } 
+
+    .poodle-hero-img {
+        margin-left: 3em;
+    }
 
     .wrapper .search-container .search-bar {
         width: 285px;
         margin-left: 2em;
     }
-
-    .poodle-hero-img {
-        margin-left: 3em;
-    }
+    
+    .lucky-buttons {
+        width: 390px;
+    } 
 }
