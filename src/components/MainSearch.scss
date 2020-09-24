@@ -16,6 +16,7 @@ $footer-color: lightgrey;
 
 .nav-bar {
     display: flex;
+    align-items: baseline;
     justify-content: space-between;
     padding: 1.5em 0.5em;
 
@@ -60,9 +61,16 @@ $footer-color: lightgrey;
     height: 100px;
     
     .search-icon {
-        
+        position: absolute;
+        margin-top: 0.4em;
+        left: 0;
+        width: 2.5em;
+        height: 2em;
+        background-image: url(https://www.clipartmax.com/png/full/32-322083_magnifying-glass-clipart-transparent-background-magnifying-glass-icon.png);
+        background-repeat: no-repeat;
+        background-position: 1.05em;
+        background-size: 1em;
     }
-
     .search-bar-wrapper {
         position: relative;
         display: block;
@@ -74,14 +82,19 @@ $footer-color: lightgrey;
         border-radius: 27px;
         border: 1px solid #dfe1e5;
         outline: none;
-        background-image: url(https://www.clipartmax.com/png/full/32-322083_magnifying-glass-clipart-transparent-background-magnifying-glass-icon.png);
-        background-repeat: no-repeat;
-        background-position: 1.05em;
-        background-size: 1em;
 
         &:hover, &:focus {
             box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
         }
+    }
+    .search-bar-input {
+        display: block;
+        margin: 0.6em auto;
+        width: 450px;
+        height: 1.5em;
+        font-size: 16px;
+        outline: none;
+        border: none;
     }
 
     .search-bar-dropdown {
@@ -90,26 +103,19 @@ $footer-color: lightgrey;
         margin: 0 auto;
         padding: 0 1.8em 0 3.2em;
         width: 450px;
-        height: 100px;
+        height: 350px;
         font-size: 16px;
         border-radius: 27px;
         border: 1px solid #dfe1e5;
         outline: none;
-        background-image: url(https://www.clipartmax.com/png/full/32-322083_magnifying-glass-clipart-transparent-background-magnifying-glass-icon.png);
-        background-repeat: no-repeat;
-        background-position: 1.05em;
-        background-size: 1em;
         box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     }
-
-    .search-bar {
-        display: block;
-        margin: 0.6em auto;
-        width: 450px;
-        height: 1.5em;
-        font-size: 16px;
-        outline: none;
-        border: none;
+    .search-dropdown-contents {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background-color: red;
     }
 }
 
@@ -140,6 +146,11 @@ $footer-color: lightgrey;
         }
     }
 }
+
+.hide {
+    display: none;
+}
+
 
 .footer {
     text-align: left;

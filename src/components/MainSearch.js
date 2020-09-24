@@ -42,18 +42,36 @@ export default class MainSearch extends Component {
                     </div>
                     <div className="search-container">
                         <div className={mainSearchDropdown ? "search-bar-dropdown" : "search-bar-wrapper"} >
-                            <i className="search-icon"></i>
+                            <div className="search-icon"></div>
                             <input
                                 onClick={this.handleChange}
                                 onBlur={this.handleFocusOut}
                                 type="text"
-                                className="search-bar" />
-                        </div>
-                            <div className="lucky-buttons">
-                                {/* these will need to be sumbit for the API  */}
-                                <input type="button" value="Poodle Search"/>
-                                <input type="button" value="I'm Feeling Lucky"/>
+                                className="search-bar-input" />
+                            <div className={mainSearchDropdown ? "search-dropdown-contents" : "hide"}>
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <div className="lucky-buttons">
+                                    <input type="button" value="Poodle Search"/>
+                                    <input type="button" value="I'm Feeling Lucky"/>
+                                </div>
                             </div>
+                        </div>
+                        <div className={`lucky-buttons ${mainSearchDropdown ? "hide" : ""}`}>
+                            {/* these will need to be sumbit for the API  */}
+                            <input type="button" value="Poodle Search"/>
+                            <input type="button" value="I'm Feeling Lucky"/>
+                        </div>
                     </div>
                     <div className="footer">
                         <span>Australia</span>
