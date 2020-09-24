@@ -1,0 +1,35 @@
+<?css 
+
+.search-term-history {
+    padding: 0;
+    margin: 0;
+
+    li {
+        padding: 6px 0;
+        list-style-type: none;
+        cursor: default;
+        
+        &:hover {
+            background-color: lightgrey;
+        }
+    }
+}
+
+?>
+
+<!html
+
+ <ul className="search-term-history">
+    <li>This is me</li>
+    <li>I'm a regular guy</li>
+    <li>Take on me</li>
+    <li>Take me on</li>
+    <li>Stick bug</li>
+    <li>Rick roll</li>
+    <li>Based</li>
+    <li>Drip</li>
+    <li>Kekw</li>
+    <li>Lets gooo</li>
+</ul>
+
+!>
