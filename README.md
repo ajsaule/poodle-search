@@ -4,7 +4,7 @@ Demo here [here]()
 
 This was part of a comapny coding challenge that I decided to replicate the popular search engine UI, have a guess which one that was. 
 
-The serach querys an API that has a limited database of existing demonstration files. 
+The serach querys a sometimes *SLOW* API (so the dog might run a few circles before the results load) that has a limited database of existing demonstration files. 
 
 My aim is to imporve the UI and make is have almost all the feature that the inspiration search engine has at the moment. 
 
