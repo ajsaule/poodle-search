@@ -94,6 +94,7 @@ export default function MainSearch() {
                 <div className="hero-container">
                     <img className="poodle-hero-img" src="https://fontmeme.com/permalink/200922/16bf0f375ad5e81bd6128af3a69a0b59.png" />
                 </div>
+                <h1>THIS IS A TEST</h1>
                 <div className="search-container">
                     <div className={searchMainDropdown ? "search-bar-dropdown" : "search-bar-wrapper"} >
                         <div className="search-icon"></div>
