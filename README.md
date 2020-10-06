@@ -1,10 +1,10 @@
 # Poodle Search 
 
-#### Try out the demo [here](https://poodle-search-q0w6ixiac.vercel.app/)
+#### Try out the demo [here](https://poodle-search.vercel.app/)
 
 ![Poodle search demo](public/assets/images/poodle-demo-img.png)
 
-This was part of a comapny coding challenge that I decided to replicate the popular search engine UI, have a guess which one that was. 
+This was part of a comapny coding challenge. I decided to replicate the popular search engine UI, have a guess which one that was. 
 
 The serach querys a sometimes *SLOW* API (so the dog might run a few circles before the results load) this API has a limited database of existing demonstration files. 
 
@@ -28,6 +28,8 @@ Vercel is an awesome solution for deploying apps, all it takes is just loggin in
 
 It also allowed callable environment variables (process.env.SUPER_SECRET_PRIVATE_KEY **not really that super secret private when the API call is going out from the client**) within your application build. 
 
-Hope you enjoy using the [demo](https://poodle-search-q0w6ixiac.vercel.app/).
+Hope you enjoy trying the [demo](https://poodle-search.vercel.app/).
 
 p.s. Don't be evil. 
+
+![dont-be-evil](https://www.accredited-times.com/wp-content/uploads/2018/05/google-dont-be-evil.jpg)
