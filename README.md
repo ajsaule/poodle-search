@@ -1,6 +1,6 @@
 # Poodle Search 
 
-#### Demo [here]()
+#### Try out the demo [here](https://poodle-search-q0w6ixiac.vercel.app/)
 
 ![Poodle search demo](public/assets/images/poodle-demo-img.png)
 
@@ -19,13 +19,15 @@ The biggest challenge here was moving from Class based compoents to using Hooks 
 It was fun to implement the loading screen and attempt cloning the worlds most popular search engine UI. 
 
 ### Build deployment:
-- CricleCI (❌ Attempted for a numebr of hours then looked for alternative)
+- CricleCI (❌ Attempted for a while then looked for alternative)
 - Vercel (✅ Current working build)
 
-Using Surge for deployment I was looking for a feature that would support the ability to store secret keys in the build without the need to create a server. Also eliminating the requirement for having to restrict requests that come from only my IP address so that key is protected. After a few hours of attempting to setup a build in CircleCI and reading docs, I decided to look for alternatives and came across Vercel.
+Using Surge for deployment I was looking for a feature that would support the ability to store keys in the build without the need to create a server. After a number of attempts to setup a build on the CircleCI platform with using environment variables, reading thorough docs etc. I finally decided to look for alternatives and came across Vercel.
 
-Vercel allowed a quick and easy setup including callable (process.env.SUPER_SECRET_PRIVATE_KEY) within your application build. 
+Vercel is an awesome solution for deploying apps, all it takes is just loggin in to your GitHub account and simply with two button clicks and pasting in your GitHub repository URL you can have your app up and running in minutes! 
 
-Hope you enjoy using the demo.
+It also allowed callable environment variables (process.env.SUPER_SECRET_PRIVATE_KEY **not really that super secret private when the API call is going out from the client**) within your application build. 
+
+Hope you enjoy using the [demo](https://poodle-search-q0w6ixiac.vercel.app/).
 
 p.s. Don't be evil. 
