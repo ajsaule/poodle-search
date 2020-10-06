@@ -1,6 +1,6 @@
 # Poodle Search 
 
-Demo here [here]()
+Demo [here]()
 
 ![Poodle search demo](public/assets/images/poodle-demo-img.png)
 
