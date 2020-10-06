@@ -26,7 +26,7 @@ Using Surge for deployment I was looking for a feature that would support the ab
 
 Vercel is an awesome solution for deploying apps, all it takes is just loggin in to your GitHub account and simply with two button clicks and pasting in your GitHub repository URL you can have your app up and running in minutes! 
 
-It also allowed callable environment variables (process.env.SUPER_SECRET_PRIVATE_KEY **not really that super secret private when the API call is going out from the client**) within your application build. 
+It also allowed callable environment variables (using process.env.SUPER_SECRET_PRIVATE_KEY in your code **not really that super secret private when the API call is going out from the client**) within your application build. 
 
 Hope you enjoy trying the [demo](https://poodle-search.vercel.app/).
 

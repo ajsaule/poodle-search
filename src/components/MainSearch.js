@@ -54,6 +54,10 @@ export default function MainSearch() {
         }
     }
 
+    const searchSelectedTerm = (e) => {
+        history.push(`/${e.target.innerHTML}`)
+    }
+
     const handleImFeelingLucky = () => {
         axios({
             method: 'post',
@@ -108,7 +112,7 @@ export default function MainSearch() {
                                 {autoComplete
                                     ? autoComplete.body.suggested.map(terms => {
                                         return (
-                                            <li> {terms} </li>
+                                            <li onClick={searchSelectedTerm}> {terms} </li>
                                         )
                                     })
                                     : null
