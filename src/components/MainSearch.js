@@ -1,92 +1,153 @@
-import React, { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useHistory, Link } from "react-router-dom";
+import MainNavBar from './MainNavBar';
+import MainFooter from './MainFooter';
 import './MainSearch.scss';
+import axios from 'axios';
 
+export default function MainSearch() {
 
-export default class MainSearch extends Component {
+    const history = useHistory()
 
-    state = {
-        mainSearchDropdown: false
+    const [query, setQuery] = useState('')
+    const [autoComplete, setAutoComplete] = useState('')
+    const [imFeelinLucky, setImFeelinLucky] = useState('')
+    const [response, setResponse] = useState('')
+    const [searchMainDropdown, setSearchMainDropdown] = useState(false)
+
+    const handleChange = (e) => {
+        const searchContents = e.target.value
+        if (searchContents.match(/^\s*$/)) {
+            setSearchMainDropdown(false)
+        } else {
+            setQuery(searchContents)
+            setSearchMainDropdown(true)
+        }
+        if (searchContents.length > 2) {
+            handleAutoComplete()
+        } else {
+            clearAutoComplete()
+        }
     }
 
+    const handleFocusOut = (e) => {
+        setSearchMainDropdown(false)
+    }
 
-    handleChange = (e) => {
-        this.setState({
-            mainSearchDropdown: true
+    const handleAutoComplete = () => {
+        axios({
+            method: 'post',
+            url: `${process.env.REACT_APP_AUTOCOMPLETE_API}${query}`,
+            data: {
+                "numSuggestedSearches": 5
+            }
         })
+            .then(res => {
+                const searchData = res.data;
+                setAutoComplete(searchData)
+            })
     }
-    handleFocusOut = (e) => {
-        this.setState({
-            mainSearchDropdown: false
+
+    const handleGoggleSearch = (e) => {
+        if (e.key === 'Enter') {
+            history.push(`/${query}`)
+        }
+    }
+
+    const handleImFeelingLucky = () => {
+        axios({
+            method: 'post',
+            url: process.env.REACT_APP_SEARCH_API,
+            data: {
+                "advancedQuery": "",
+                "didYouMean": "",
+                "filterData": "",
+                "page": "1",
+                "pageSize": "10",
+                "profile": "all",
+                "query": query,
+                "sort": ""
+            }
         })
+            .then(res => {
+                const searchData = res.data.body.results[0].url;
+                setImFeelinLucky(searchData)
+            })
     }
 
-    render() {
-        const { mainSearchDropdown } = this.state;
+    const clearAutoComplete = () => {
+        setAutoComplete('')
+        setSearchMainDropdown(false)
+    }
 
-        return (
-            <Router>
-                <div>
-                    <div className="wrapper">
-                        <div className="nav-bar">
-                            <div>
-                                <a href="#">About</a>
-                                <a href="#">Store</a>
-                            </div>
-                            <div>
-                                <a href="#">Gmail</a>
-                                <a href="#">Images</a>
-                                <input type="button" value="Sign In" />
-                            </div>
-                        </div>
-                        <div className="hero-container">
-                            <img className="poodle-hero-img" src="https://fontmeme.com/permalink/200922/16bf0f375ad5e81bd6128af3a69a0b59.png" />
-                        </div>
-                        <div className="search-container">
-                            <div className={mainSearchDropdown ? "search-bar-dropdown" : "search-bar-wrapper"} >
-                                <div className="search-icon"></div>
+    useEffect(() => {
+        if (imFeelinLucky) {
+            window.location.href = `${imFeelinLucky}`
+        }
+    }, [imFeelinLucky]);
+    
+    
+    return (
+        <div>
+            <div className="wrapper" onClick={handleFocusOut}>
+                <MainNavBar />
+                <div className="hero-container">
+                    <img className="poodle-hero-img" src="https://fontmeme.com/permalink/200922/16bf0f375ad5e81bd6128af3a69a0b59.png" />
+                </div>
+                <div className="search-container">
+                    <div className={searchMainDropdown ? "search-bar-dropdown" : "search-bar-wrapper"} >
+                        <div className="search-icon"></div>
+                        <input
+                            onChange={handleChange}
+                            onKeyDown={handleGoggleSearch}
+                            type="text"
+                            className="search-bar-input" />
+                        <div className={searchMainDropdown ? "search-dropdown-contents" : "hide"}>
+                            <hr />
+                            <ul className="search-autocomplete">
+                                {autoComplete
+                                    ? autoComplete.body.suggested.map(terms => {
+                                        return (
+                                            <li> {terms} </li>
+                                        )
+                                    })
+                                    : null
+                                }
+                            </ul>
+                            <div className="lucky-buttons">
+                                <Link to={`/${query}`}>
                                 <input
-                                    onChange={this.handleChange}
-                                    onBlur={this.handleFocusOut}
-                                    type="text"
-                                    className="search-bar-input" />
-                                <div className={mainSearchDropdown ? "search-dropdown-contents" : "hide"}>
-                                    <hr />
-                                    {/* loop through and print the api auto-complete here  */}
-                                    <div className="lucky-buttons">
-                                        <input type="button" value="Poodle Search" />
-                                        <input type="button" value="I'm Feeling Lucky" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={`lucky-buttons ${mainSearchDropdown ? "hide" : ""}`}>
-                                {/* these will need to be sumbit for the API  */}
-                                <Link to="/results">
-                                    <input type="button" value="Poodle Search" />
+                                    type="button"
+                                    value="Goggle Search"
+                                    onClick={handleGoggleSearch} />
                                 </Link>
-                                <input type="button" value="I'm Feeling Lucky" />
+                                <input
+                                    type="button"
+                                    value="I'm Feeling Lucky"
+                                    onClick={handleImFeelingLucky} />
                             </div>
-                        </div>
-                        <div className="footer">
-                            <span>Australia</span>
                         </div>
                     </div>
+                    <div className={`lucky-buttons ${searchMainDropdown ? "hide" : ""}`}>
+                        <Link to={`/${query}`}>
+                            <input
+                                type="button"
+                                value="Goggle Search"
+                            />
+                        </Link>
+                        <input
+                            type="button"
+                            value="I'm Feeling Lucky"
+                            onClick={handleImFeelingLucky} />
+                    </div>
                 </div>
-                <Switch>
-                    <Route path="/results">
-                        <ResultsSearch />
-                    </Route>
-                </Switch>
-            </Router>
-        );
-    }
+                <MainFooter />
+            </div>
+        </div>
+    );
 }
 
-function ResultsSearch() {
-    return <ResultsSearch />
-}
+
+
+
+
