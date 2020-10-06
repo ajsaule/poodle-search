@@ -86,7 +86,7 @@ export default function MainSearch() {
         }
     }, [imFeelinLucky]);
     
-    
+
     return (
         <div>
             <div className="wrapper" onClick={handleFocusOut}>
@@ -118,7 +118,7 @@ export default function MainSearch() {
                                 <Link to={`/${query}`}>
                                 <input
                                     type="button"
-                                    value="Goggle Search"
+                                    value="Poodle Search"
                                     onClick={handleGoggleSearch} />
                                 </Link>
                                 <input
@@ -132,7 +132,7 @@ export default function MainSearch() {
                         <Link to={`/${query}`}>
                             <input
                                 type="button"
-                                value="Goggle Search"
+                                value="Poodle Search"
                             />
                         </Link>
                         <input

@@ -2,6 +2,8 @@
 
 Demo here [here]()
 
+![Poodle search demo](public/assets/images/poodle-demo-img.png)
+
 This was part of a comapny coding challenge that I decided to replicate the popular search engine UI, have a guess which one that was. 
 
 The serach querys a sometimes *SLOW* API (so the dog might run a few circles before the results load) that has a limited database of existing demonstration files. 
