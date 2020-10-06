@@ -32,4 +32,4 @@ Hope you enjoy trying the [demo](https://poodle-search.vercel.app/).
 
 p.s. Don't be evil. 
 
-![dont-be-evil](https://www.accredited-times.com/wp-content/uploads/2018/05/google-dont-be-evil.jpg)
+![dont-be-evil](public/assets/images/google-dont-be-evil.jpg)
