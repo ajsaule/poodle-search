@@ -21,7 +21,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    // "test": "react-scripts test",
+    "test": "echo \"Error: no test specified.\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^8.2.0" 
+    "dotenv": "^8.2.0",
+    "surge": "^0.21.6"
   }
 }
