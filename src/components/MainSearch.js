@@ -37,7 +37,7 @@ export default function MainSearch() {
     const handleAutoComplete = () => {
         axios({
             method: 'post',
-            url: `${process.env.REACT_APP_AUTOCOMPLETE_API}${query}`,
+            url: `${REACT_APP_AUTOCOMPLETE_API}${query}`,
             data: {
                 "numSuggestedSearches": 5
             }
@@ -57,7 +57,7 @@ export default function MainSearch() {
     const handleImFeelingLucky = () => {
         axios({
             method: 'post',
-            url: process.env.REACT_APP_SEARCH_API,
+            url: REACT_APP_SEARCH_API,
             data: {
                 "advancedQuery": "",
                 "didYouMean": "",
