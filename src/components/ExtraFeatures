@@ -33,3 +33,22 @@
 </ul>
 
 !>
+
+
+<js 
+// how could I make a date range filer based on the API or manually process the data when it comes back and gets stored in state
+
+// const renderDateRange = (apiResponse, dateRange) => {
+//     components = apiResponse.body.results.map(result => (
+//         <div>
+//             <ResultSearchItem
+//                 url={result.url}
+//                 title={result.title}
+//                 body={result.body}
+//                 date={result.lastModified} />
+//         </div>
+        
+//     ))
+// }
+
+!>

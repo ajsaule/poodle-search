@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import ResultSearchItem from './ResultSearchItem';
 import ResultSearchItems from './ResultSearchItems';
-import './ResultsSearch.scss';
 import axios from 'axios';
+import './ResultsSearch.scss';
 
 export default function ResultsSearch() {
 
@@ -66,20 +66,6 @@ export default function ResultsSearch() {
         ))
         
     }
-
-    // const renderDateRange = (apiResponse, dateRange) => {
-    //     components = apiResponse.body.results.map(result => (
-    //         <div>
-    //             <ResultSearchItem
-    //                 url={result.url}
-    //                 title={result.title}
-    //                 body={result.body}
-    //                 date={result.lastModified} />
-    //         </div>
-            
-    //     ))
-    // }
-
 
     if (loading) {
         return (

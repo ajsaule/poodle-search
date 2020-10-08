@@ -12,7 +12,6 @@ export default function MainSearch() {
     const [query, setQuery] = useState('')
     const [autoComplete, setAutoComplete] = useState('')
     const [imFeelinLucky, setImFeelinLucky] = useState('')
-    const [response, setResponse] = useState('')
     const [searchMainDropdown, setSearchMainDropdown] = useState(false)
 
     const handleChange = (e) => {

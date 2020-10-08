@@ -33,3 +33,13 @@ Hope you enjoy trying the [demo](https://poodle-search.vercel.app/).
 p.s. Don't be evil. 
 
 ![dont-be-evil](public/assets/images/google-dont-be-evil.jpg)
+
+## Improvements 
+
+- Fix dropdown overflow for mobile view 
+- Extra space when scrolling down on mobile 
+- Possibly add cards for mobile views instead of the desktop list that drops down 
+- Implement date range filtering 
+- Add remaining buttons to the search navbar for aesthetic purposes 
+- Fix domain paths to cut off and leave ... at a certain length so they take up 2 lines instead of 1 
+- Add easter egg.. 🥚
