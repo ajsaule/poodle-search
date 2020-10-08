@@ -207,7 +207,7 @@ body {
 
 /* Breakpoint vars */
 $tablet: 555px; 
-$mobile: 400px;
+$mobile: 450px;
 $mobile-small: 380px;
 
 /* Breakpoints */
@@ -219,11 +219,19 @@ $mobile-small: 380px;
     .search-container .search-bar-input {
         width: 100%;
     }
+
+    .search-container .search-bar-dropdown, .search-dropdown-contents {
+        width: 79%;
+    }
 }
 
 @media (max-width: $mobile) {
-    .nav-bar {
-        width: 400px;
+    .search-container .search-bar-wrapper {
+        width: 75%;
+        margin: 0 0.6em;
+    }
+    .search-container .search-bar-dropdown, .search-dropdown-contents {
+        width: 75%;
     }
 }
 
@@ -238,11 +246,14 @@ $mobile-small: 380px;
     }
 
     .search-container .search-bar-wrapper {
-        width: 69%;
+        width: 72%;
         margin: 0.6em 0.6em;
     }
     .search-container .search-bar-input {
         width: 100%;
+    }
+    .search-container .search-bar-dropdown, .search-dropdown-contents {
+        width: 69%;
     }
 
     .wrapper .search-container .search-bar {
