@@ -4,11 +4,11 @@
 
 ![Poodle search demo](public/assets/images/poodle-demo-img.png)
 
-I decided to replicate the popular search engine UI, have a guess which one that was. 
+I decided to replicate the worlds most popular search engine UI, you can have a guess at which one that was. 
 
 The serach querys a sometimes *SLOW* API (so the dog might run a few circles before the results load) this API has a limited database of existing files for demonstration purposes. 
 
-My aim is to imporve the UI and make is have almost all the feature that the inspiration search engine has at the moment. 
+My aim is to imporve the UI and make is have most of the features that the inspiration search engine has at the moment. 
 
 ### Technologies used: 
 - React, React Hooks, React Router 
