@@ -212,8 +212,12 @@ $mobile-small: 380px;
 
 /* Breakpoints */
 @media (max-width: $tablet) {
-    .search-container .search-bar-wrapper, .search-container .search-bar-input {
-        width: 80%;
+    .search-container .search-bar-wrapper {
+        width: 79%;
+        margin: 0 0.6em;
+    }
+    .search-container .search-bar-input {
+        width: 100%;
     }
 }
 
@@ -229,7 +233,16 @@ $mobile-small: 380px;
     }
 
     .poodle-hero-img {
-        margin-left: 3em;
+        height: 67px;
+        // margin-left: 3em;
+    }
+
+    .search-container .search-bar-wrapper {
+        width: 69%;
+        margin: 0.6em 0.6em;
+    }
+    .search-container .search-bar-input {
+        width: 100%;
     }
 
     .wrapper .search-container .search-bar {
@@ -238,6 +251,7 @@ $mobile-small: 380px;
     }
     
     .lucky-buttons {
-        width: 390px;
+        // width: 390px;
+        display: none;
     } 
 }
