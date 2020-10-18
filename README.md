@@ -41,6 +41,6 @@ p.s. Don't be evil.
 - Possibly add cards for mobile views instead of the desktop list that drops down 
 - Implement date range filtering 
 - Add remaining buttons to the search navbar for aesthetic purposes 
-- Fix domain paths to cut off and leave ... at a certain length so they take up 2 lines instead of 1
+- Fix domain paths to cut off and leave ... at a certain length so they take up 1 lines instead of 2
 - Minimise loading screen for mobile views
 - Add easter egg.. 🥚
