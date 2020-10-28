@@ -1,5 +1,7 @@
 # Poodle Search 
 
+** The main dropdown menu is broken at the moment, will be fixed shortly
+
 #### Try out the demo [here](https://poodle-search.vercel.app/)
 
 ![Poodle search demo](public/assets/images/poodle-demo-img.png)
