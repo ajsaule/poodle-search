@@ -90,6 +90,7 @@ export default function MainSearch() {
     }).then((res) => {
       const searchData = res.data.body.results[0].url;
       setImFeelinLucky(searchData);
+      setDropdownSearchRan(false);
     });
   };
 
