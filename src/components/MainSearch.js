@@ -18,7 +18,6 @@ let INITIAL_DATA = {
 
 export default function MainSearch() {
   const history = useHistory();
-
   const [query, setQuery] = useState("");
   const [autoComplete, setAutoComplete] = useState(undefined);
   const [imFeelinLucky, setImFeelinLucky] = useState("");
@@ -57,6 +56,7 @@ export default function MainSearch() {
       })
       .then((res) => {
         const searchData = res.data;
+        // console.log(res.data);
         setAutoComplete(searchData);
       });
   };
@@ -122,36 +122,34 @@ export default function MainSearch() {
               type="text"
               className="search-bar-input"
             />
-            {autoComplete && (
-              <div
-                className={
-                  searchMainDropdown ? "search-dropdown-contents" : "hide"
-                }
-              >
-                <hr />
-                <ul className="search-autocomplete">
-                  {autoComplete
-                    ? autoComplete.body.suggested.map((terms) => {
-                        return <li onClick={searchSelectedTerm}> {terms} </li>;
-                      })
-                    : null}
-                </ul>
-                <div className="lucky-buttons-dropdown">
-                  <Link to={`/${query}`}>
-                    <input
-                      type="button"
-                      value="Poodle Search"
-                      onClick={handleGoggleSearch}
-                    />
-                  </Link>
+            <div
+              className={
+                searchMainDropdown ? "search-dropdown-contents" : "hide"
+              }
+            >
+              <hr />
+              <ul className="search-autocomplete">
+                {autoComplete
+                  ? autoComplete.body.suggested.map((terms) => {
+                      return <li onClick={searchSelectedTerm}> {terms} </li>;
+                    })
+                  : null}
+              </ul>
+              <div className="lucky-buttons-dropdown">
+                <Link to={`/${query}`}>
                   <input
                     type="button"
-                    value="I'm Feeling Lucky"
-                    onClick={handleImFeelingLucky}
+                    value="Poodle Search"
+                    onClick={handleGoggleSearch}
                   />
-                </div>
+                </Link>
+                <input
+                  type="button"
+                  value="I'm Feeling Lucky"
+                  onClick={handleImFeelingLucky}
+                />
               </div>
-            )}
+            </div>
           </div>
           <div className={`lucky-buttons ${searchMainDropdown ? "hide" : ""}`}>
             <Link to={`/${query}`}>
