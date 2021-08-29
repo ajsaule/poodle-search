@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {useHistory, Link} from "react-router-dom";
 import MainNavBar from "./MainNavBar";
 import MainFooter from "./MainFooter";
@@ -18,7 +18,9 @@ let INITIAL_DATA = {
 
 export default function MainSearch() {
   const history = useHistory();
+  const dropHeight = useRef();
   const [query, setQuery] = useState("");
+  const [dropdownSearchRan, setDropdownSearchRan] = useState(false);
   const [autoComplete, setAutoComplete] = useState(undefined);
   const [imFeelinLucky, setImFeelinLucky] = useState("");
   const [searchMainDropdown, setSearchMainDropdown] = useState(false);
@@ -29,7 +31,7 @@ export default function MainSearch() {
       setSearchMainDropdown(false);
     } else {
       setQuery(searchContents);
-      setSearchMainDropdown(true);
+      if (autoComplete) setSearchMainDropdown(true);
     }
     if (searchContents.length > 2) {
       handleAutoComplete();
@@ -43,21 +45,24 @@ export default function MainSearch() {
   };
 
   const handleAutoComplete = () => {
+    setDropdownSearchRan(true);
     axios({
       method: "post",
       url: `${process.env.REACT_APP_AUTOCOMPLETE_API}${query}`,
       data: {
-        numSuggestedSearches: 5,
+        numSuggestedSearches: 6,
       },
     })
-      .catch((e) => {
-        console.log(e);
-        setAutoComplete(undefined);
-      })
+      // .catch((e) => {
+      //   console.log(e);
+      //   setAutoComplete(undefined);
+      // })
       .then((res) => {
-        const searchData = res.data;
-        // console.log(res.data);
-        setAutoComplete(searchData);
+        if (res) {
+          const searchData = res.data;
+          // console.log(res.data);
+          setAutoComplete(searchData);
+        }
       });
   };
 
@@ -90,6 +95,7 @@ export default function MainSearch() {
 
   const clearAutoComplete = () => {
     setAutoComplete("");
+    setDropdownSearchRan(false);
     setSearchMainDropdown(false);
   };
 
@@ -116,6 +122,9 @@ export default function MainSearch() {
             }
           >
             <div className="search-icon"></div>
+            {dropdownSearchRan && (
+              <div className="search-dropdown-spinner"></div>
+            )}
             <input
               onChange={handleChange}
               onKeyDown={handleGoggleSearch}
@@ -123,6 +132,7 @@ export default function MainSearch() {
               className="search-bar-input"
             />
             <div
+              ref={dropHeight}
               className={
                 searchMainDropdown ? "search-dropdown-contents" : "hide"
               }

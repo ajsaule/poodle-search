@@ -96,6 +96,17 @@ body {
     background-position: 1.05em;
     background-size: 1em;
   }
+  .search-dropdown-spinner {
+    position: absolute;
+    margin-top: 0.1em;
+    right: 0;
+    width: 4em;
+    height: 2em;
+    background-image: url(https://www.petbarn.com.au/petspot/app/themes/the-marmalade-child/includes/images/dropdowns/dropdown_dog.gif);
+    background-repeat: no-repeat;
+    background-position: 1.05em;
+    background-size: 2em;
+  }
   .search-bar-wrapper {
     position: relative;
     align-self: center;
