@@ -58,11 +58,11 @@ export default function MainSearch() {
       //   setAutoComplete(undefined);
       // })
       .then((res) => {
-        if (res) {
-          const searchData = res.data;
-          // console.log(res.data);
-          setAutoComplete(searchData);
-        }
+        // if (res) {
+        const searchData = res.data;
+        // console.log(res.data);
+        setAutoComplete(searchData);
+        // }
       });
   };
 
