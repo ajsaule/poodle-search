@@ -10,6 +10,7 @@ export default function ResultSearchItems(props) {
           indx={indx}
       />
   )
+  
   return (
     <div>
       {components}
