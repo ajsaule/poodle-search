@@ -1,6 +1,5 @@
 # Poodle Search 
 
-** The main dropdown menu is broken at the moment, will be fixed shortly
 
 #### Try out the demo [here](https://poodle-search.vercel.app/)
 
@@ -45,4 +44,5 @@ p.s. Don't be evil.
 - Add remaining buttons to the search navbar for aesthetic purposes 
 - Fix domain paths to cut off and leave ... at a certain length so they take up 1 lines instead of 2
 - Minimise loading screen for mobile views
+- Add a spinner doggo for the autocomplete dropdown
 - Add easter egg.. 🥚
