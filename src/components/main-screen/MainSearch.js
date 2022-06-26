@@ -20,9 +20,9 @@ export default function MainSearch() {
   const history = useHistory();
   const dropHeight = useRef();
   const [query, setQuery] = useState("");
-  const [dropdownSearchRan, setDropdownSearchRan] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const [autoComplete, setAutoComplete] = useState(undefined);
-  const [imFeelinLucky, setImFeelinLucky] = useState("");
+  const [imFeelingLucky, setImFeelingLucky] = useState("");
   const [searchMainDropdown, setSearchMainDropdown] = useState(false);
 
   const handleChange = (e) => {
@@ -45,7 +45,7 @@ export default function MainSearch() {
   };
 
   const handleAutoComplete = () => {
-    setDropdownSearchRan(true);
+    setIsSearching(true);
     axios({
       method: "post",
       url: `${process.env.REACT_APP_AUTOCOMPLETE_API}${query}`,
@@ -53,20 +53,13 @@ export default function MainSearch() {
         numSuggestedSearches: 6,
       },
     })
-      // .catch((e) => {
-      //   console.log(e);
-      //   setAutoComplete(undefined);
-      // })
       .then((res) => {
-        // if (res) {
         const searchData = res.data;
-        // console.log(res.data);
         setAutoComplete(searchData);
-        // }
       });
   };
 
-  const handleGoggleSearch = (e) => {
+  const handlePoodleSearch = (e) => {
     if (e.key === "Enter") {
       history.push(`/${query}`);
     }
@@ -89,22 +82,22 @@ export default function MainSearch() {
       },
     }).then((res) => {
       const searchData = res.data.body.results[0].url;
-      setImFeelinLucky(searchData);
-      setDropdownSearchRan(false);
+      setImFeelingLucky(searchData);
+      setIsSearching(false);
     });
   };
 
   const clearAutoComplete = () => {
     setAutoComplete("");
-    setDropdownSearchRan(false);
+    setIsSearching(false);
     setSearchMainDropdown(false);
   };
 
   useEffect(() => {
-    if (imFeelinLucky) {
-      window.location.href = `${imFeelinLucky}`;
+    if (imFeelingLucky) {
+      window.location.href = `${imFeelingLucky}`;
     }
-  }, [imFeelinLucky]);
+  }, [imFeelingLucky]);
 
   return (
     <div>
@@ -112,6 +105,7 @@ export default function MainSearch() {
         <MainNavBar />
         <div className="hero-container">
           <img
+            alt="poodle search hero"
             className="poodle-hero-img"
             src="https://fontmeme.com/permalink/200922/16bf0f375ad5e81bd6128af3a69a0b59.png"
           />
@@ -123,12 +117,12 @@ export default function MainSearch() {
             }
           >
             <div className="search-icon"></div>
-            {dropdownSearchRan && (
+            {isSearching && (
               <div className="search-dropdown-spinner"></div>
             )}
             <input
               onChange={handleChange}
-              onKeyDown={handleGoggleSearch}
+              onKeyDown={handlePoodleSearch}
               type="text"
               className="search-bar-input"
             />
@@ -151,7 +145,7 @@ export default function MainSearch() {
                   <input
                     type="button"
                     value="Poodle Search"
-                    onClick={handleGoggleSearch}
+                    onClick={handlePoodleSearch}
                   />
                 </Link>
                 <input

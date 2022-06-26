@@ -5,8 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import MainSearch from './components/MainSearch';
-import ResultsSearch from './components/ResultsSearch';
+import MainSearch from './components/main-screen/MainSearch';
+import ResultsSearch from './components/results-screen/ResultsSearch';
 import './App.scss';
 
 function App() {

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import ResultSearchItem from './ResultSearchItem';
 import ResultSearchItems from './ResultSearchItems';
+import ResultsPagination from './ResultsPagination';
 import axios from 'axios';
 import './ResultsSearch.scss';
 
@@ -16,7 +17,7 @@ export default function ResultsSearch() {
     // const [searchMainDropdown, setSearchMainDropdown] = useState(false)
 
     useEffect(() => {
-        handleInitialGoggleSearch(query)
+        handleInitialPoodleSearch(query)
     }, [])
 
     const apiCall = (query) => {
@@ -37,23 +38,23 @@ export default function ResultsSearch() {
             .then(res => {
                 const searchData = res.data;
                 setResponse(searchData)
-                renderGoggleSearch(searchData)
+                renderPoodleSearch(searchData)
             })
     }
 
-    const handleGoggleSearch = e => {
+    const handlePoodleSearch = e => {
         const queryInputValue = e.target.value
         if (e.key === 'Enter') {
             apiCall(queryInputValue)
         }
     }
 
-    const handleInitialGoggleSearch = urlQuery => {
+    const handleInitialPoodleSearch = urlQuery => {
         apiCall(urlQuery)
     }
 
     let components = []
-    const renderGoggleSearch = apiResponse => {
+    const renderPoodleSearch = apiResponse => {
         setLoading(false)
         components = apiResponse.body.results.map(result => (
             <div>
@@ -82,7 +83,7 @@ export default function ResultsSearch() {
                         <div className="search-bar-wrapper">
                             <div className="search-icon"></div>
                             <input
-                                onKeyDown={handleGoggleSearch}
+                                onKeyDown={handlePoodleSearch}
                                 type="text"
                                 className="search-bar-input"
                                 defaultValue={queryUrlParams.slug}
@@ -107,7 +108,8 @@ export default function ResultsSearch() {
                             About {response.body.resultsCount} results ({response.time} seconds)
                         </span>
                     </div>
-                    <ResultSearchItems data={response.body.results}/>
+                    <ResultSearchItems data={response.body.results} />
+                    <ResultsPagination />
                 </div>
             </div>
         )
