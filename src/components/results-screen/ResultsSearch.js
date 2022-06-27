@@ -20,7 +20,7 @@ export default function ResultsSearch() {
         handleInitialPoodleSearch(query)
     }, [])
 
-    const apiCall = (query) => {
+    const apiCall = (query, page = 1) => {
         axios({
             method: 'post',
             url: process.env.REACT_APP_SEARCH_API,
@@ -28,7 +28,7 @@ export default function ResultsSearch() {
                 "advancedQuery": "",
                 "didYouMean": "",
                 "filterData": "",
-                "page": "1",
+                "page": page,
                 "pageSize": "10",
                 "profile": "all",
                 "query": query,
@@ -109,7 +109,7 @@ export default function ResultsSearch() {
                         </span>
                     </div>
                     <ResultSearchItems data={response.body.results} />
-                    <ResultsPagination />
+                    <ResultsPagination query={query} apiCall={apiCall} resultsCount={response.body.resultsCount} />
                 </div>
             </div>
         )

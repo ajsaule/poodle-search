@@ -1,20 +1,43 @@
-import React from 'react'
+import React, { Fragment, useState } from "react";
+import './ResultsSearch.scss';
 
-export default function ResultsPagination() {
+const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+export default function ResultsPagination({apiCall, query, resultsCount}) {
+  const [selectedPage, setSelectedPage] = useState(1)
+
   return (
-    <div class="pagination-container">
-      <a class="first"><span>P</span></a>
-      <a class="page"><span>o</span>1</a>
-      <a class="page"><span>o</span>2</a>
-      <a class="page"><span>o</span>3</a>
-      <a class="page"><span>o</span>4</a>
-      <a class="page"><span>o</span>5</a>
-      <a class="page"><span>o</span>6</a>
-      <a class="page"><span>o</span>7</a>
-      <a class="page"><span>o</span>8</a>
-      <a class="page"><span>o</span>9</a>
-      <a class="page"><span class="tenth">o</span>10</a>
-      <a class="last"><span class="d">d</span><span class="l">l</span><span class="e">e</span></a>
+    <div className="pagination-container">
+      <a className="first"><span>P</span></a>
+      {pages.map((page, idx) => {
+        if (Math.ceil(resultsCount / 10) >= (idx + 1)) {
+          return (
+            <Pagination
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+              apiCall={apiCall}
+              query={query}
+              page={page}
+            />
+          )
+        }
+      }
+      )}
+      <a className="last"><span class="d">d</span><span class="l">l</span><span class="e">e</span></a>
     </div>
+  )
+}
+
+const Pagination = ({ selectedPage, setSelectedPage, apiCall, query, page }) => {
+
+  const updatePage = (query, page) => {
+    setSelectedPage(page)
+    apiCall(query, page)
+  }
+
+  return (
+    <a onClick={() => updatePage(query, page)} className="page">
+      <span className={page == selectedPage ? "checked" : ''}>o</span>{page}
+    </a>
   )
 }
