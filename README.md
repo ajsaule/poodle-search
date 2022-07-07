@@ -7,7 +7,7 @@
 
 I decided to replicate the worlds most popular search engine UI, you can have a guess at which one that was. 
 
-The serach querys a sometimes *SLOW* API (so the dog might run a few circles before the results load) this API has a limited database of existing files for demonstration purposes. 
+The serach querys a *slow* API (so the dog might run a few circles before the results load) this API has a limited database of existing entries for demonstration purposes. 
 
 My aim is to imporve the UI and make is have most of the features that the inspiration search engine has at the moment. 
 
@@ -25,7 +25,7 @@ It was fun to implement the loading screen and attempt cloning the worlds most p
 
 Using Surge for deployment I was looking for a feature that would support the ability to store keys in the build without the need to create a server. After a number of attempts to setup a build on the CircleCI platform with using environment variables, reading thorough docs etc. I finally decided to look for alternatives and came across Vercel.
 
-Vercel is an awesome solution for deploying apps, all it takes is just loggin in to your GitHub account and simply with two button clicks and pasting in your GitHub repository URL you can have your app up and running in minutes! 
+Vercel is an awesome solution for deploying apps, all it takes is just to login in to your GitHub account and simply with two button clicks and pasting in your GitHub repository URL you can have your app up and running in minutes! 
 
 It also allowed callable environment variables (using process.env.SUPER_SECRET_PRIVATE_KEY in your code **not really that super secret private when the API call is going out from the client**) within your application build. 
 
