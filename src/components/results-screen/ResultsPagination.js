@@ -1,43 +1,80 @@
-import React, { Fragment, useState } from "react";
-import './ResultsSearch.scss';
+import React, { useEffect, useState } from "react";
 
-const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-export default function ResultsPagination({apiCall, query, resultsCount}) {
+export default function ResultsPagination({apiCall, query, resultsCount, newSearchMade}) {
   const [selectedPage, setSelectedPage] = useState(1)
+  const [pages, setPages] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-  return (
-    <div className="pagination-container">
-      <a className="first"><span>P</span></a>
-      {pages.map((page, idx) => {
-        if (Math.ceil(resultsCount / 10) >= (idx + 1)) {
-          return (
-            <Pagination
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              apiCall={apiCall}
-              query={query}
-              page={page}
-            />
-          )
-        }
-      }
-      )}
-      <a className="last"><span class="d">d</span><span class="l">l</span><span class="e">e</span></a>
-    </div>
-  )
-}
+  useEffect(() => {
+    apiCall(query, selectedPage)
+    updatePage(selectedPage)
+  }, [selectedPage])
 
-const Pagination = ({ selectedPage, setSelectedPage, apiCall, query, page }) => {
+  useEffect(() => {
+    setPages([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    setSelectedPage(1)
+  }, [newSearchMade])
 
-  const updatePage = (query, page) => {
-    setSelectedPage(page)
-    apiCall(query, page)
+  const togglePreviousAndNext = (action) => {
+    if (selectedPage !== 1 && action === 'previous') setSelectedPage(selectedPage - 1)
+    else if (selectedPage < Math.ceil(resultsCount / 10) && action === 'next') setSelectedPage(selectedPage + 1)
   }
 
-  return (
-    <a onClick={() => updatePage(query, page)} className="page">
-      <span className={page == selectedPage ? "checked" : ''}>o</span>{page}
-    </a>
-  )
+  const updatePage = (page) => {
+    if (page > 5 && page == pages[0]) {
+      let decrementedPages = pages.map(page => page - 5)
+      setPages(decrementedPages)
+    }
+    if (page == pages[pages.length - 1]) {
+      let incrementedPages = pages.map(page => page + 5)
+      setPages(incrementedPages)
+    }
+    setSelectedPage(page)
+  }
+
+  if (resultsCount === 0) {
+    return (
+      <div>Woofps, seems like theres no results for that search...</div>
+    )
+  } else {
+    return (
+      <div className="pagination-container">
+        <a className="prev-next" onClick={() => togglePreviousAndNext('previous')}>
+          <span>{'<'}</span><span className="ul">Previous</span>
+        </a>
+        <a onClick={() => togglePreviousAndNext(true)}><span className="first">P</span></a>
+        {pages.map((page, idx) => {
+          if (Math.ceil(resultsCount / 10) >= (idx + 1)) {
+            return (
+              <Pagination
+                updatePage={updatePage}
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+                setPages={setPages}
+                pages={pages}
+                page={page}
+              />
+            )
+          }
+        }
+        )}
+        <a
+          className="last"
+          onClick={() => togglePreviousAndNext('next')}
+        >
+          <span className="d">d</span><span className="l">l</span><span className="e">e</span>
+        </a>
+        <a
+          className="prev-next"
+          onClick={() => togglePreviousAndNext('next')}
+        >
+          <span>{'>'}</span><span className="ul">Next</span>
+        </a>
+      </div>
+    )
+  }
 }
+
+const Pagination = ({ updatePage, selectedPage, page }) =>
+  <a onClick={() => updatePage(page)} className="page">
+    <span className={page == selectedPage ? "checked" : ''}>o</span>
+  <a className="pl">{page}</a></a>

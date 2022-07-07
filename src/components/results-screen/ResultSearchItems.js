@@ -2,7 +2,7 @@ import React from 'react'
 import ResultSearchItem from './ResultSearchItem'
 
 export default function ResultSearchItems(props) {
-  const components = props.data.map((item, indx) => 
+  const searchItems = props.resultData.map((item, indx) => 
       <ResultSearchItem
           title={item.title}
           url={item.url}
@@ -13,7 +13,7 @@ export default function ResultSearchItems(props) {
   
   return (
     <div>
-      {components}
+      {searchItems}
     </div>
   )
 }

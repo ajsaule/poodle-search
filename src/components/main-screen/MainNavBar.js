@@ -11,7 +11,7 @@ export default function MainNavBar() {
                     <a  href="#store">Store</a>
                 </li>
                 <li className="menu-right ml-auto">
-                    <a  href="#gmail">Pmail</a>
+                    <a  href="#pmail">Pmail</a>
                 </li>
                 <li className="menu-right">
                     <a  href="#images">Images</a>

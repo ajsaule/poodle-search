@@ -79,7 +79,7 @@ $footer-color: #f2f2f2;
         color: #222;
         cursor: pointer;
 
-        &:hover, &:active{
+        &:hover, &:active {
             margin: 0 0.5em 0 12em;
             padding: 0.3em 0.5em;
             border: 1px solid #f2f2f2;
@@ -138,6 +138,7 @@ $footer-color: #f2f2f2;
             font-style: initial;
             font-size: 14px;
             text-decoration: none!important;
+
         }
 
         h3 {
@@ -146,9 +147,9 @@ $footer-color: #f2f2f2;
             font-weight: normal;
         }
 
-        &:hover {
+         &:hover h3 {
             text-decoration: underline;
-        }
+         }
     }
 }
 
@@ -160,15 +161,16 @@ $footer-color: #f2f2f2;
     a {
         color: #79027a;
         cursor: pointer;
+    }
 
-        &:hover {
-            // text-decoration: underline;
-            border:  1px #980699 solid;
-            border-radius: 5px;
-        }
+    .prev-next {
+        width: 80px;
+        display: grid;
+        align-items: center;
+        text-align: center;
 
-        &:active {
-            background-color: #980699;
+        &:hover .ul { 
+            text-decoration: underline;
         }
     }
 
@@ -177,6 +179,10 @@ $footer-color: #f2f2f2;
         font-weight: 300;
         -webkit-text-stroke: 1px #980699;
 	    -webkit-text-fill-color: #82c614;
+    }
+
+    .ul:hover .first {
+        text-decoration: underline;
     }
     
     .page {
@@ -189,6 +195,10 @@ $footer-color: #f2f2f2;
             -webkit-text-stroke: 1px #980699;
             -webkit-text-fill-color: #1598c3;
         }
+
+        &:hover .pl {
+            text-decoration: underline;
+        }
     }
 
     .checked {
@@ -197,7 +207,6 @@ $footer-color: #f2f2f2;
     }
     
     .last {
-        color: #1598c3;
         font-size: 40px;
         font-weight: 300;
 
@@ -214,6 +223,10 @@ $footer-color: #f2f2f2;
         .e {    
             -webkit-text-stroke: 1px #980699;
             -webkit-text-fill-color: #1598c3;
+        }
+
+        &:hover .ul { 
+            text-decoration: underline;
         }
     }
 }
